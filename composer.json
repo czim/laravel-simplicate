@@ -1,0 +1,37 @@
+{
+    "name": "czim/laravel-simplicate",
+    "description": "Laravel Simplicate API Client",
+    "keywords": [ "laravel", "simplicate", "api", "client" ],
+    "homepage": "https://github.com/czim",
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*|~1.0",
+        "phpunit/phpunit": "~6.0|~7.0",
+        "orchestra/testbench": "~3.5|~3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Czim\\Simplicate\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Czim\\Simplicate\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Czim\\Simplicate\\Providers\\SimplicateServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
