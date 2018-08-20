@@ -85,7 +85,7 @@ class Leave extends AbstractDataObject
         $this->endDate     = new Carbon(array_get($data, 'end_date'));
         $this->year        = array_get($data, 'year');
         $this->hours       = array_get($data, 'hours');
-        $this->description = array_get($data, 'description');
+        $this->description = array_get($data, 'description') ?: '';
     }
 
     public function getId(): string

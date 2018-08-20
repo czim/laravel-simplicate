@@ -4,6 +4,8 @@ namespace Czim\Simplicate\Services\Domains;
 
 use Czim\Simplicate\Contracts\Data\SimplicateResponseInterface;
 use Czim\Simplicate\Contracts\Services\Domains\HrmDomainInterface;
+use Czim\Simplicate\Data\Responses\EmployeeListResponse;
+use Czim\Simplicate\Data\Responses\EmployeeSingleResponse;
 use Czim\Simplicate\Data\Responses\LeaveListResponse;
 use Czim\Simplicate\Data\Responses\LeaveSingleResponse;
 
@@ -16,6 +18,25 @@ class HrmDomain extends AbstractDomain implements HrmDomainInterface
     public function path(): string
     {
         return 'hrm';
+    }
+
+    /**
+     * @return SimplicateResponseInterface|EmployeeListResponse
+     */
+    public function allEmployees(): EmployeeListResponse
+    {
+        return $this->client->responseClass(EmployeeListResponse::class)
+            ->get($this->prefixPath('employee'));
+    }
+
+    /**
+     * @param string $id
+     * @return SimplicateResponseInterface|EmployeeSingleResponse
+     */
+    public function employee(string $id): EmployeeSingleResponse
+    {
+        return $this->client->responseClass(EmployeeSingleResponse::class)
+            ->get($this->prefixPath('employee/' . $id));
     }
 
     /**

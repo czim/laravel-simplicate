@@ -162,7 +162,6 @@ class SimplicateClient implements SimplicateClientInterface
         }
 
         $options['query'] = $this->collectQueryParameters();
-        $options['debug'] = true;
 
         try {
             $response = $this->client->request($method, $path, $options);
