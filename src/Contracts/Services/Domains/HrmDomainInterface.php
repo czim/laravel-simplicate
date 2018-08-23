@@ -7,6 +7,7 @@ use Czim\Simplicate\Data\Responses\EmployeeListResponse;
 use Czim\Simplicate\Data\Responses\EmployeeSingleResponse;
 use Czim\Simplicate\Data\Responses\LeaveListResponse;
 use Czim\Simplicate\Data\Responses\LeaveSingleResponse;
+use Czim\Simplicate\Data\Responses\TimeTableListResponse;
 
 interface HrmDomainInterface extends SimplicateDomainInterface
 {
@@ -19,6 +20,6 @@ interface HrmDomainInterface extends SimplicateDomainInterface
 
     public function leave(string $id): LeaveSingleResponse;
 
-    //public function addLeave(...): ...;
+    public function timeTables(): TimeTableListResponse;
     
 }

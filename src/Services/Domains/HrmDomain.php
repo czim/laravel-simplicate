@@ -8,6 +8,7 @@ use Czim\Simplicate\Data\Responses\EmployeeListResponse;
 use Czim\Simplicate\Data\Responses\EmployeeSingleResponse;
 use Czim\Simplicate\Data\Responses\LeaveListResponse;
 use Czim\Simplicate\Data\Responses\LeaveSingleResponse;
+use Czim\Simplicate\Data\Responses\TimeTableListResponse;
 
 class HrmDomain extends AbstractDomain implements HrmDomainInterface
 {
@@ -56,6 +57,15 @@ class HrmDomain extends AbstractDomain implements HrmDomainInterface
     {
         return $this->client->responseClass(LeaveSingleResponse::class)
             ->get($this->prefixPath('leave/' . $id));
+    }
+
+    /**
+     * @return SimplicateResponseInterface|TimeTableListResponse
+     */
+    public function timeTables(): TimeTableListResponse
+    {
+        return $this->client->responseClass(TimeTableListResponse::class)
+            ->get($this->prefixPath('timetable'));
     }
 
 }
