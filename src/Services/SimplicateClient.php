@@ -194,7 +194,7 @@ class SimplicateClient implements SimplicateClientInterface
 
         $this->resetFluentState();
 
-        return $this->makeReponse($response);
+        return $this->makeResponse($response);
     }
 
     protected function collectQueryParameters(): array
@@ -220,7 +220,7 @@ class SimplicateClient implements SimplicateClientInterface
         return $query;
     }
 
-    protected function makeReponse(ResponseInterface $response): SimplicateResponseInterface
+    protected function makeResponse(ResponseInterface $response): SimplicateResponseInterface
     {
         // The response should be JSON.
         try {
