@@ -3,7 +3,7 @@
 namespace Czim\Simplicate\Data\Hours;
 
 use Czim\Simplicate\Data\AbstractDataObject;
-use Czim\Simplicate\Data\Employee\CustomField;
+use Czim\Simplicate\Data\CustomField\CustomField;
 use Czim\Simplicate\Data\Employee\EmployeeReference;
 use Czim\Simplicate\Data\Project\ProjectReference;
 use Czim\Simplicate\Data\Service\ServiceReference;
@@ -100,7 +100,7 @@ class Hours extends AbstractDataObject
         $this->employee       = new EmployeeReference(array_get($data, 'employee', []));
         $this->project        = new ProjectReference(array_get($data, 'project', []));
         $this->projectService = new ServiceReference(array_get($data, 'projectservice', []));
-        $this->type           = new Type(array_get($data, 'hours', []));
+        $this->type           = new Type(array_get($data, 'type', []));
         $this->tariff         = (float) array_get($data, 'tariff');
         $this->createdAt      = $this->castStringAsDate(array_get($data, 'created_at'));
         $this->updatedAt      = $this->castStringAsDate(array_get($data, 'updated_at'));
@@ -117,7 +117,7 @@ class Hours extends AbstractDataObject
                 function (array $item) {
                     return new CustomField($item);
                 },
-                $data
+                array_get($data, 'custom_fields', [])
             )
         );
     }

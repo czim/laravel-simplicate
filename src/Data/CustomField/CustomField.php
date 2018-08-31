@@ -1,6 +1,6 @@
 <?php
 
-namespace Czim\Simplicate\Data\Employee;
+namespace Czim\Simplicate\Data\CustomField;
 
 use Czim\Simplicate\Data\AbstractDataObject;
 
