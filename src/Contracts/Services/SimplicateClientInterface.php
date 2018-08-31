@@ -7,6 +7,8 @@ use Czim\Simplicate\Contracts\Data\SimplicateResponseInterface;
 interface SimplicateClientInterface
 {
 
+    public function setAuthentication(string $key, string $secret): SimplicateClientInterface;
+
     /**
      * @param int $offset
      * @return $this

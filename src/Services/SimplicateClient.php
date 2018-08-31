@@ -17,6 +17,16 @@ class SimplicateClient implements SimplicateClientInterface
     protected $client;
 
     /**
+     * @var string|null
+     */
+    protected $authenticationKey;
+
+    /**
+     * @var string|null
+     */
+    protected $authenticationSecret;
+
+    /**
      * @var int
      */
     protected $offset = 0;
@@ -59,6 +69,14 @@ class SimplicateClient implements SimplicateClientInterface
         $this->client = $client;
     }
 
+
+    public function setAuthentication(string $key, string $secret): SimplicateClientInterface
+    {
+        $this->authenticationKey    = $key;
+        $this->authenticationSecret = $secret;
+
+        return $this;
+    }
 
     /**
      * @param int $offset
@@ -157,6 +175,8 @@ class SimplicateClient implements SimplicateClientInterface
     {
         $options = $this->options;
 
+        $this->addAuthenticationToOptions($options);
+
         if ($body !== null) {
             $options['body'] = $body;
         }
@@ -239,6 +259,22 @@ class SimplicateClient implements SimplicateClientInterface
             array_get($responseArray,'errors'),
             array_get($responseArray,'debug')
         );
+    }
+
+    /**
+     * Adds authentication key and secret to the guzzle options, where possible.
+     *
+     * @param array $options
+     * @return array
+     */
+    protected function addAuthenticationToOptions(array $options): array
+    {
+        if (null !== $this->authenticationKey && null !== $this->authenticationSecret) {
+            $options = array_set($options, 'headers.Authentication-Key', $this->authenticationKey);
+            $options = array_set($options, 'headers.Authentication-Secret', $this->authenticationSecret);
+        }
+
+        return $options;
     }
 
     /**

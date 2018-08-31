@@ -35,6 +35,14 @@ class SimplicateService implements SimplicateServiceInterface
         $this->hrm   = new HrmDomain($client);
     }
 
+
+    public function setAuthentication(string $key, string $secret): SimplicateServiceInterface
+    {
+        $this->client->setAuthentication($key, $secret);
+
+        return $this;
+    }
+
     public function hours(): Domains\HoursDomainInterface
     {
         return $this->hours;
