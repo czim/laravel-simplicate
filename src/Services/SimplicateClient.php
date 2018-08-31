@@ -173,9 +173,7 @@ class SimplicateClient implements SimplicateClientInterface
 
     protected function call(string $method, $path, array $body = null)
     {
-        $options = $this->options;
-
-        $this->addAuthenticationToOptions($options);
+        $options = $this->addAuthenticationToOptions($this->options);
 
         if ($body !== null) {
             $options['body'] = $body;
