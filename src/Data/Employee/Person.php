@@ -4,6 +4,7 @@ namespace Czim\Simplicate\Data\Employee;
 
 use Carbon\Carbon;
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class Person extends AbstractDataObject
 {
@@ -48,7 +49,7 @@ class Person extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $dateOfBirth = array_get($data, 'date_of_birth');
+        $dateOfBirth = Arr::get($data, 'date_of_birth');
 
         if (is_string($dateOfBirth)) {
 
@@ -60,12 +61,12 @@ class Person extends AbstractDataObject
         }
 
 
-        $this->id          = array_get($data, 'id');
+        $this->id          = Arr::get($data, 'id');
         $this->dateOfBirth = $dateOfBirth ? new Carbon($dateOfBirth) : null;
-        $this->genderId    = array_get($data, 'gender_id');
-        $this->gender      = array_get($data, 'gender');
-        $this->address     = new Address(array_get($data, 'address', []));
-        $this->fullName    = array_get($data, 'full_name');
+        $this->genderId    = Arr::get($data, 'gender_id');
+        $this->gender      = Arr::get($data, 'gender');
+        $this->address     = new Address(Arr::get($data, 'address', []));
+        $this->fullName    = Arr::get($data, 'full_name');
     }
 
 

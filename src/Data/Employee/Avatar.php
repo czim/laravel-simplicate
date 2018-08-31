@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Employee;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class Avatar extends AbstractDataObject
 {
@@ -30,10 +31,10 @@ class Avatar extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->urlSmall = array_get($data, 'url_small');
-        $this->urlLarge = array_get($data, 'url_large');
-        $this->initials = array_get($data, 'initials');
-        $this->color    = array_get($data, 'color');
+        $this->urlSmall = Arr::get($data, 'url_small');
+        $this->urlLarge = Arr::get($data, 'url_large');
+        $this->initials = Arr::get($data, 'initials');
+        $this->color    = Arr::get($data, 'color');
     }
 
 

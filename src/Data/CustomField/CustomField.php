@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\CustomField;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class CustomField extends AbstractDataObject
 {
@@ -45,13 +46,13 @@ class CustomField extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id         = array_get($data, 'id');
-        $this->name       = array_get($data, 'name');
-        $this->label      = array_get($data, 'label');
-        $this->renderType = array_get($data, 'render_type');
-        $this->position   = (int) array_get($data, 'position');
-        $this->valueType  = array_get($data, 'valueType');
-        $this->options    = array_get($data, 'options', []);
+        $this->id         = Arr::get($data, 'id');
+        $this->name       = Arr::get($data, 'name');
+        $this->label      = Arr::get($data, 'label');
+        $this->renderType = Arr::get($data, 'render_type');
+        $this->position   = (int) Arr::get($data, 'position');
+        $this->valueType  = Arr::get($data, 'valueType');
+        $this->options    = Arr::get($data, 'options', []);
     }
 
 

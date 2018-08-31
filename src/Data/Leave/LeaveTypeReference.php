@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Leave;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class LeaveTypeReference extends AbstractDataObject
 {
@@ -25,9 +26,9 @@ class LeaveTypeReference extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id             = array_get($data, 'id');
-        $this->label          = array_get($data, 'label');
-        $this->affectsBalance = (bool) array_get($data, 'affects_balance', false);
+        $this->id             = Arr::get($data, 'id');
+        $this->label          = Arr::get($data, 'label');
+        $this->affectsBalance = (bool) Arr::get($data, 'affects_balance', false);
     }
 
     public function getId(): string

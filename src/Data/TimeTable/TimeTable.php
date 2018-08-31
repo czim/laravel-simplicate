@@ -5,6 +5,7 @@ namespace Czim\Simplicate\Data\TimeTable;
 use Carbon\Carbon;
 use Czim\Simplicate\Data\AbstractDataObject;
 use Czim\Simplicate\Data\Employee\EmployeeReference;
+use Illuminate\Support\Arr;
 
 class TimeTable extends AbstractDataObject
 {
@@ -48,13 +49,13 @@ class TimeTable extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->employee          = new EmployeeReference(array_get($data, 'employee', []));
-        $this->hourlySalesTariff = (float) array_get($data, 'hourly_sales_tariff');
-        $this->hourlyCostTariff  = (float) array_get($data, 'hourly_cost_tariff');
-        $this->evenWeek          = new TimeTableWeek(array_get($data, 'even_week', []));
-        $this->oddWeek           = new TimeTableWeek(array_get($data, 'odd_week', []));
-        $this->startDate         = $this->castStringAsDate(array_get($data, 'start_date'));
-        $this->endDate           = $this->castStringAsDate(array_get($data, 'end_date'));
+        $this->employee          = new EmployeeReference(Arr::get($data, 'employee', []));
+        $this->hourlySalesTariff = (float) Arr::get($data, 'hourly_sales_tariff');
+        $this->hourlyCostTariff  = (float) Arr::get($data, 'hourly_cost_tariff');
+        $this->evenWeek          = new TimeTableWeek(Arr::get($data, 'even_week', []));
+        $this->oddWeek           = new TimeTableWeek(Arr::get($data, 'odd_week', []));
+        $this->startDate         = $this->castStringAsDate(Arr::get($data, 'start_date'));
+        $this->endDate           = $this->castStringAsDate(Arr::get($data, 'end_date'));
     }
 
 

@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Hours;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class VatClass extends AbstractDataObject
 {
@@ -25,9 +26,9 @@ class VatClass extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id         = array_get($data, 'id');
-        $this->label      = array_get($data, 'label');
-        $this->percentage = array_get($data, 'percentage', 0);
+        $this->id         = Arr::get($data, 'id');
+        $this->label      = Arr::get($data, 'label');
+        $this->percentage = Arr::get($data, 'percentage', 0);
     }
 
 

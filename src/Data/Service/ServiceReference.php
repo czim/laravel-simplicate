@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Service;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class ServiceReference extends AbstractDataObject
 {
@@ -30,10 +31,10 @@ class ServiceReference extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id               = array_get($data, 'id');
-        $this->name             = array_get($data, 'name');
-        $this->defaultServiceId = array_get($data, 'default_service_id');
-        $this->revenueGroupId   = array_get($data, 'revenue_group_id');
+        $this->id               = Arr::get($data, 'id');
+        $this->name             = Arr::get($data, 'name');
+        $this->defaultServiceId = Arr::get($data, 'default_service_id');
+        $this->revenueGroupId   = Arr::get($data, 'revenue_group_id');
     }
 
 

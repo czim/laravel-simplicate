@@ -5,6 +5,7 @@ namespace Czim\Simplicate\Data\Leave;
 use Carbon\Carbon;
 use Czim\Simplicate\Data\AbstractDataObject;
 use Czim\Simplicate\Data\Employee\EmployeeReference;
+use Illuminate\Support\Arr;
 
 class Leave extends AbstractDataObject
 {
@@ -74,18 +75,18 @@ class Leave extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id          = array_get($data, 'id');
-        $this->employee    = new EmployeeReference(array_get($data, 'employee'));
-        $this->leaveType   = new LeaveTypeReference(array_get($data, 'leavetype'));
-        $this->created     = new Carbon(array_get($data, 'created'));
-        $this->createdAt   = new Carbon(array_get($data, 'created_at'));
-        $this->modified    = $this->castStringAsDate(array_get($data, 'modified'));
-        $this->updatedAt   = $this->castStringAsDate(array_get($data, 'updated_at'));
-        $this->startDate   = new Carbon(array_get($data, 'start_date'));
-        $this->endDate     = new Carbon(array_get($data, 'end_date'));
-        $this->year        = array_get($data, 'year');
-        $this->hours       = array_get($data, 'hours');
-        $this->description = array_get($data, 'description') ?: '';
+        $this->id          = Arr::get($data, 'id');
+        $this->employee    = new EmployeeReference(Arr::get($data, 'employee'));
+        $this->leaveType   = new LeaveTypeReference(Arr::get($data, 'leavetype'));
+        $this->created     = new Carbon(Arr::get($data, 'created'));
+        $this->createdAt   = new Carbon(Arr::get($data, 'created_at'));
+        $this->modified    = $this->castStringAsDate(Arr::get($data, 'modified'));
+        $this->updatedAt   = $this->castStringAsDate(Arr::get($data, 'updated_at'));
+        $this->startDate   = new Carbon(Arr::get($data, 'start_date'));
+        $this->endDate     = new Carbon(Arr::get($data, 'end_date'));
+        $this->year        = Arr::get($data, 'year');
+        $this->hours       = Arr::get($data, 'hours');
+        $this->description = Arr::get($data, 'description') ?: '';
     }
 
     public function getId(): string

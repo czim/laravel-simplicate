@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Employee;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class EmployeeReference extends AbstractDataObject
 {
@@ -25,9 +26,9 @@ class EmployeeReference extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id       = array_get($data, 'id');
-        $this->personId = array_get($data, 'person_id');
-        $this->name     = array_get($data, 'name');
+        $this->id       = Arr::get($data, 'id');
+        $this->personId = Arr::get($data, 'person_id');
+        $this->name     = Arr::get($data, 'name');
     }
 
     public function getId(): ?string

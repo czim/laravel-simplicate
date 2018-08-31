@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Employee;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class TeamReference extends AbstractDataObject
 {
@@ -20,8 +21,8 @@ class TeamReference extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id   = array_get($data, 'id');
-        $this->name = array_get($data, 'name');
+        $this->id   = Arr::get($data, 'id');
+        $this->name = Arr::get($data, 'name');
     }
 
 

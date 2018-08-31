@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\TimeTable;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class TimeTableDay extends AbstractDataObject
 {
@@ -25,9 +26,9 @@ class TimeTableDay extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->startTime = array_get($data, 'start_time', 0.0);
-        $this->endTime   = array_get($data, 'end_time', 0.0);
-        $this->hours     = array_get($data, 'hours', 0);
+        $this->startTime = Arr::get($data, 'start_time', 0.0);
+        $this->endTime   = Arr::get($data, 'end_time', 0.0);
+        $this->hours     = Arr::get($data, 'hours', 0);
     }
 
 

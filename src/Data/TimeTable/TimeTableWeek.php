@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\TimeTable;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class TimeTableWeek extends AbstractDataObject
 {
@@ -24,13 +25,13 @@ class TimeTableWeek extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->days[0] = new TimeTableDay(array_get($data, 'day_1', []));
-        $this->days[1] = new TimeTableDay(array_get($data, 'day_2', []));
-        $this->days[2] = new TimeTableDay(array_get($data, 'day_3', []));
-        $this->days[3] = new TimeTableDay(array_get($data, 'day_4', []));
-        $this->days[4] = new TimeTableDay(array_get($data, 'day_5', []));
-        $this->days[5] = new TimeTableDay(array_get($data, 'day_6', []));
-        $this->days[6] = new TimeTableDay(array_get($data, 'day_7', []));
+        $this->days[0] = new TimeTableDay(Arr::get($data, 'day_1', []));
+        $this->days[1] = new TimeTableDay(Arr::get($data, 'day_2', []));
+        $this->days[2] = new TimeTableDay(Arr::get($data, 'day_3', []));
+        $this->days[3] = new TimeTableDay(Arr::get($data, 'day_4', []));
+        $this->days[4] = new TimeTableDay(Arr::get($data, 'day_5', []));
+        $this->days[5] = new TimeTableDay(Arr::get($data, 'day_6', []));
+        $this->days[6] = new TimeTableDay(Arr::get($data, 'day_7', []));
     }
 
     public function getDayOne(): TimeTableDay

@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Employee;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class Type extends AbstractDataObject
 {
@@ -20,8 +21,8 @@ class Type extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id    = array_get($data, 'id');
-        $this->label = array_get($data, 'label');
+        $this->id    = Arr::get($data, 'id');
+        $this->label = Arr::get($data, 'label');
     }
 
 

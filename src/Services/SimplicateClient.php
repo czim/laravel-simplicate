@@ -6,6 +6,7 @@ use Czim\Simplicate\Contracts\Data\SimplicateResponseInterface;
 use Czim\Simplicate\Contracts\Services\SimplicateClientInterface;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Arr;
 use Psr\Http\Message\ResponseInterface;
 
 class SimplicateClient implements SimplicateClientInterface
@@ -253,9 +254,9 @@ class SimplicateClient implements SimplicateClientInterface
         $class = $this->responseClass;
 
         return new $class(
-            array_get($responseArray,'data'),
-            array_get($responseArray,'errors'),
-            array_get($responseArray,'debug')
+            Arr::get($responseArray,'data'),
+            Arr::get($responseArray,'errors'),
+            Arr::get($responseArray,'debug')
         );
     }
 
@@ -268,8 +269,8 @@ class SimplicateClient implements SimplicateClientInterface
     protected function addAuthenticationToOptions(array $options): array
     {
         if (null !== $this->authenticationKey && null !== $this->authenticationSecret) {
-            $options = array_set($options, 'headers.Authentication-Key', $this->authenticationKey);
-            $options = array_set($options, 'headers.Authentication-Secret', $this->authenticationSecret);
+            Arr::set($options, 'headers.Authentication-Key', $this->authenticationKey);
+            Arr::set($options, 'aheaders.Authentication-Secret', $this->authenticationSecret);
         }
 
         return $options;

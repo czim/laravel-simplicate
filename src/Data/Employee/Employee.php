@@ -4,6 +4,7 @@ namespace Czim\Simplicate\Data\Employee;
 
 use Carbon\Carbon;
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 class Employee extends AbstractDataObject
@@ -122,33 +123,33 @@ class Employee extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id                = array_get($data, 'id');
-        $this->isUser            = (bool) array_get($data, 'is_user');
+        $this->id                = Arr::get($data, 'id');
+        $this->isUser            = (bool) Arr::get($data, 'is_user');
         $this->teams             = new Collection(
             array_map(function (array $data) {
                 return new TeamReference($data);
             },
-            array_get($data, 'teams', []))
+            Arr::get($data, 'teams', []))
         );
-        $this->supervisor        = new EmployeeReference(array_get($data, 'supervisor', []));
-        $this->person            = new Person(array_get($data, 'person', []));
-        $this->status            = new Status(array_get($data, 'status', []));
-        $this->personId          = array_get($data, 'person_id');
-        $this->name              = array_get($data, 'name');
-        $this->function          = array_get($data, 'function');
-        $this->type              = new Type(array_get($data, 'type', []));
-        $this->employmentStatus  = array_get($data, 'employment_status');
-        $this->workPhone         = array_get($data, 'work_phone');
-        $this->workMobile        = array_get($data, 'work_mobile');
-        $this->workEmail         = array_get($data, 'work_email');
-        $this->hourlySalesTariff = (float) array_get($data, 'hourly_sales_tariff');
-        $this->hourlyCostTariff  = (float) array_get($data, 'hourly_cost_tariff');
-        $this->avatar            = new Avatar(array_get($data, 'avatar', []));
-        $this->created           = $this->castStringAsDate(array_get($data, 'created'));
-        $this->createdAt         = $this->castStringAsDate(array_get($data, 'created_at'));
-        $this->modified          = $this->castStringAsDate(array_get($data, 'modified'));
-        $this->updatedAt         = $this->castStringAsDate(array_get($data, 'updated_at'));
-        $this->simplicateUrl     = array_get($data, 'simplicate_url');
+        $this->supervisor        = new EmployeeReference(Arr::get($data, 'supervisor', []));
+        $this->person            = new Person(Arr::get($data, 'person', []));
+        $this->status            = new Status(Arr::get($data, 'status', []));
+        $this->personId          = Arr::get($data, 'person_id');
+        $this->name              = Arr::get($data, 'name');
+        $this->function          = Arr::get($data, 'function');
+        $this->type              = new Type(Arr::get($data, 'type', []));
+        $this->employmentStatus  = Arr::get($data, 'employment_status');
+        $this->workPhone         = Arr::get($data, 'work_phone');
+        $this->workMobile        = Arr::get($data, 'work_mobile');
+        $this->workEmail         = Arr::get($data, 'work_email');
+        $this->hourlySalesTariff = (float) Arr::get($data, 'hourly_sales_tariff');
+        $this->hourlyCostTariff  = (float) Arr::get($data, 'hourly_cost_tariff');
+        $this->avatar            = new Avatar(Arr::get($data, 'avatar', []));
+        $this->created           = $this->castStringAsDate(Arr::get($data, 'created'));
+        $this->createdAt         = $this->castStringAsDate(Arr::get($data, 'created_at'));
+        $this->modified          = $this->castStringAsDate(Arr::get($data, 'modified'));
+        $this->updatedAt         = $this->castStringAsDate(Arr::get($data, 'updated_at'));
+        $this->simplicateUrl     = Arr::get($data, 'simplicate_url');
     }
 
     public function getId(): string

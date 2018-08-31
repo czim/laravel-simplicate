@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Project;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class ProjectReference extends AbstractDataObject
 {
@@ -25,9 +26,9 @@ class ProjectReference extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id           = array_get($data, 'id');
-        $this->name         = array_get($data, 'name');
-        $this->organization = new OrganizationReference(array_get($data, 'organization', []));
+        $this->id           = Arr::get($data, 'id');
+        $this->name         = Arr::get($data, 'name');
+        $this->organization = new OrganizationReference(Arr::get($data, 'organization', []));
     }
 
     public function getId(): ?string

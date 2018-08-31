@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Employee;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class Address extends AbstractDataObject
 {
@@ -55,15 +56,15 @@ class Address extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id          = array_get($data, 'id');
-        $this->country     = array_get($data, 'country');
-        $this->type        = array_get($data, 'type');
-        $this->lineOne     = array_get($data, 'line_1');
-        $this->lineTwo     = array_get($data, 'line_2');
-        $this->postalCode  = array_get($data, 'postal_code');
-        $this->locality    = array_get($data, 'locality');
-        $this->countryCode = array_get($data, 'country_code');
-        $this->countryId   = array_get($data, 'country_id');
+        $this->id          = Arr::get($data, 'id');
+        $this->country     = Arr::get($data, 'country');
+        $this->type        = Arr::get($data, 'type');
+        $this->lineOne     = Arr::get($data, 'line_1');
+        $this->lineTwo     = Arr::get($data, 'line_2');
+        $this->postalCode  = Arr::get($data, 'postal_code');
+        $this->locality    = Arr::get($data, 'locality');
+        $this->countryCode = Arr::get($data, 'country_code');
+        $this->countryId   = Arr::get($data, 'country_id');
     }
 
 

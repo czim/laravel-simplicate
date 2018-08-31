@@ -8,6 +8,7 @@ use Czim\Simplicate\Data\Employee\EmployeeReference;
 use Czim\Simplicate\Data\Project\ProjectReference;
 use Czim\Simplicate\Data\Service\ServiceReference;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 class Hours extends AbstractDataObject
@@ -96,28 +97,28 @@ class Hours extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id             = array_get($data, 'id');
-        $this->employee       = new EmployeeReference(array_get($data, 'employee', []));
-        $this->project        = new ProjectReference(array_get($data, 'project', []));
-        $this->projectService = new ServiceReference(array_get($data, 'projectservice', []));
-        $this->type           = new Type(array_get($data, 'type', []));
-        $this->tariff         = (float) array_get($data, 'tariff');
-        $this->createdAt      = $this->castStringAsDate(array_get($data, 'created_at'));
-        $this->updatedAt      = $this->castStringAsDate(array_get($data, 'updated_at'));
-        $this->locked         = (bool) array_get($data, 'locked');
-        $this->hours          = (float) array_get($data, 'hours');
-        $this->startDate      = $this->castStringAsDate(array_get($data, 'start_date'));
-        $this->endDate        = $this->castStringAsDate(array_get($data, 'end_date'));
-        $this->isTimeDefined  = (bool) array_get($data, 'is_time_defined');
-        $this->note           = array_get($data, 'note');
-        $this->source         = array_get($data, 'source');
+        $this->id             = Arr::get($data, 'id');
+        $this->employee       = new EmployeeReference(Arr::get($data, 'employee', []));
+        $this->project        = new ProjectReference(Arr::get($data, 'project', []));
+        $this->projectService = new ServiceReference(Arr::get($data, 'projectservice', []));
+        $this->type           = new Type(Arr::get($data, 'type', []));
+        $this->tariff         = (float) Arr::get($data, 'tariff');
+        $this->createdAt      = $this->castStringAsDate(Arr::get($data, 'created_at'));
+        $this->updatedAt      = $this->castStringAsDate(Arr::get($data, 'updated_at'));
+        $this->locked         = (bool) Arr::get($data, 'locked');
+        $this->hours          = (float) Arr::get($data, 'hours');
+        $this->startDate      = $this->castStringAsDate(Arr::get($data, 'start_date'));
+        $this->endDate        = $this->castStringAsDate(Arr::get($data, 'end_date'));
+        $this->isTimeDefined  = (bool) Arr::get($data, 'is_time_defined');
+        $this->note           = Arr::get($data, 'note');
+        $this->source         = Arr::get($data, 'source');
 
         $this->customFields = new Collection(
             array_map(
                 function (array $item) {
                     return new CustomField($item);
                 },
-                array_get($data, 'custom_fields', [])
+                Arr::get($data, 'custom_fields', [])
             )
         );
     }

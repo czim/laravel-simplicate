@@ -3,6 +3,7 @@
 namespace Czim\Simplicate\Data\Hours;
 
 use Czim\Simplicate\Data\AbstractDataObject;
+use Illuminate\Support\Arr;
 
 class Type extends AbstractDataObject
 {
@@ -35,11 +36,11 @@ class Type extends AbstractDataObject
 
     public function __construct(array $data)
     {
-        $this->id       = array_get($data, 'id');
-        $this->type     = array_get($data, 'type');
-        $this->vatClass = new VatClass(array_get($data, 'vatclass', []));
-        $this->label    = array_get($data, 'label');
-        $this->tariff   = array_has($data, 'tariff') ? (float) array_get($data, 'tariff') : null;
+        $this->id       = Arr::get($data, 'id');
+        $this->type     = Arr::get($data, 'type');
+        $this->vatClass = new VatClass(Arr::get($data, 'vatclass', []));
+        $this->label    = Arr::get($data, 'label');
+        $this->tariff   = Arr::has($data, 'tariff') ? (float) Arr::get($data, 'tariff') : null;
     }
 
 
