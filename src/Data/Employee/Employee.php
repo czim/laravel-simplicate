@@ -144,8 +144,8 @@ class Employee extends AbstractDataObject
         $this->hourlySalesTariff = (float) array_get($data, 'hourly_sales_tariff');
         $this->hourlyCostTariff  = (float) array_get($data, 'hourly_cost_tariff');
         $this->avatar            = new Avatar(array_get($data, 'avatar', []));
-        $this->created           = new Carbon(array_get($data, 'created'));
-        $this->createdAt         = new Carbon(array_get($data, 'created_at'));
+        $this->created           = $this->castStringAsDate(array_get($data, 'created'));
+        $this->createdAt         = $this->castStringAsDate(array_get($data, 'created_at'));
         $this->modified          = $this->castStringAsDate(array_get($data, 'modified'));
         $this->updatedAt         = $this->castStringAsDate(array_get($data, 'updated_at'));
         $this->simplicateUrl     = array_get($data, 'simplicate_url');
