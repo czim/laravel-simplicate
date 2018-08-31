@@ -5,7 +5,7 @@ namespace Czim\Simplicate\Data\Hours;
 use Czim\Simplicate\Data\AbstractDataObject;
 use Illuminate\Support\Arr;
 
-class Type extends AbstractDataObject
+class TypeReference extends AbstractDataObject
 {
 
     /**
@@ -59,6 +59,11 @@ class Type extends AbstractDataObject
         return $this->vatClass;
     }
 
+    public function getLabel(): string
+    {
+        return $this->label;
+    }
+
     public function getTariff(): ?float
     {
         return $this->tariff;
@@ -73,11 +78,6 @@ class Type extends AbstractDataObject
             'label'    => $this->getLabel(),
             'tariff'   => $this->getTariff(),
         ];
-    }
-
-    public function getLabel(): string
-    {
-        return $this->label;
     }
 
 }

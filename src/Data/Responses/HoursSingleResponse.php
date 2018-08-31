@@ -3,12 +3,11 @@
 namespace Czim\Simplicate\Data\Responses;
 
 use Czim\Simplicate\Data\Hours\Hours;
-use Czim\Simplicate\Data\Leave\Leave;
 
 /**
  * Class HoursSingleResponse
  *
- * @method Leave getData()
+ * @method Hours getData()
  */
 class HoursSingleResponse extends AbstractDataResponse
 {

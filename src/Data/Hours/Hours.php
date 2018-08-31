@@ -35,7 +35,7 @@ class Hours extends AbstractDataObject
     protected $projectService;
 
     /**
-     * @var Type
+     * @var TypeReference
      */
     protected $type;
 
@@ -101,7 +101,7 @@ class Hours extends AbstractDataObject
         $this->employee       = new EmployeeReference(Arr::get($data, 'employee', []));
         $this->project        = new ProjectReference(Arr::get($data, 'project', []));
         $this->projectService = new ServiceReference(Arr::get($data, 'projectservice', []));
-        $this->type           = new Type(Arr::get($data, 'type', []));
+        $this->type           = new TypeReference(Arr::get($data, 'type', []));
         $this->tariff         = (float) Arr::get($data, 'tariff');
         $this->createdAt      = $this->castStringAsDate(Arr::get($data, 'created_at'));
         $this->updatedAt      = $this->castStringAsDate(Arr::get($data, 'updated_at'));
@@ -144,7 +144,7 @@ class Hours extends AbstractDataObject
         return $this->projectService;
     }
 
-    public function getType(): Type
+    public function getType(): TypeReference
     {
         return $this->type;
     }
