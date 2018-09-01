@@ -7,6 +7,7 @@ use Czim\Simplicate\Contracts\Services\SimplicateClientInterface;
 use Czim\Simplicate\Contracts\Services\SimplicateServiceInterface;
 use Czim\Simplicate\Services\Domains\HoursDomain;
 use Czim\Simplicate\Services\Domains\HrmDomain;
+use Czim\Simplicate\Services\Domains\ProjectsDomain;
 
 class SimplicateService implements SimplicateServiceInterface
 {
@@ -26,13 +27,19 @@ class SimplicateService implements SimplicateServiceInterface
      */
     protected $hrm;
 
+    /**
+     * @var Domains\ProjectsDomainInterface
+     */
+    protected $projects;
+
 
     public function __construct(SimplicateClientInterface $client)
     {
         $this->client = $client;
 
-        $this->hours = new HoursDomain($client);
-        $this->hrm   = new HrmDomain($client);
+        $this->hours    = new HoursDomain($client);
+        $this->hrm      = new HrmDomain($client);
+        $this->projects = new ProjectsDomain($client);
     }
 
 
@@ -51,6 +58,11 @@ class SimplicateService implements SimplicateServiceInterface
     public function hrm(): Domains\HrmDomainInterface
     {
         return $this->hrm;
+    }
+
+    public function projects(): Domains\ProjectsDomainInterface
+    {
+        return $this->projects;
     }
 
 }

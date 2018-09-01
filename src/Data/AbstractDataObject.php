@@ -27,4 +27,13 @@ abstract class AbstractDataObject implements Arrayable
         return $dateTime->format('Y-m-d H:i:s');
     }
 
+    protected function formatDateOnly(?DateTime $dateTime): ?string
+    {
+        if ( ! $dateTime) {
+            return null;
+        }
+
+        return $dateTime->format('Y-m-d');
+    }
+
 }
