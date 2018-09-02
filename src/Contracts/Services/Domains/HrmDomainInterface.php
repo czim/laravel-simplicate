@@ -8,6 +8,8 @@ use Czim\Simplicate\Data\Responses\EmployeeSingleResponse;
 use Czim\Simplicate\Data\Responses\LeaveBalanceListResponse;
 use Czim\Simplicate\Data\Responses\LeaveListResponse;
 use Czim\Simplicate\Data\Responses\LeaveSingleResponse;
+use Czim\Simplicate\Data\Responses\LeaveTypeListResponse;
+use Czim\Simplicate\Data\Responses\LeaveTypeSingleResponse;
 use Czim\Simplicate\Data\Responses\TeamListResponse;
 use Czim\Simplicate\Data\Responses\TeamSingleResponse;
 use Czim\Simplicate\Data\Responses\TimeTableListResponse;
@@ -24,6 +26,10 @@ interface HrmDomainInterface extends SimplicateDomainInterface
     public function leave(string $id): LeaveSingleResponse;
 
     public function leaveBalance(): LeaveBalanceListResponse;
+
+    public function allLeaveTypes(): LeaveTypeListResponse;
+
+    public function leaveType(string $id): LeaveTypeSingleResponse;
 
     public function allTeams(): TeamListResponse;
 
