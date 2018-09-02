@@ -6,6 +6,7 @@ use Czim\Simplicate\Contracts\Data\SimplicateResponseInterface;
 use Czim\Simplicate\Contracts\Services\Domains\HrmDomainInterface;
 use Czim\Simplicate\Data\Responses\EmployeeListResponse;
 use Czim\Simplicate\Data\Responses\EmployeeSingleResponse;
+use Czim\Simplicate\Data\Responses\LeaveBalanceListResponse;
 use Czim\Simplicate\Data\Responses\LeaveListResponse;
 use Czim\Simplicate\Data\Responses\LeaveSingleResponse;
 use Czim\Simplicate\Data\Responses\TeamListResponse;
@@ -59,6 +60,15 @@ class HrmDomain extends AbstractDomain implements HrmDomainInterface
     {
         return $this->client->responseClass(LeaveSingleResponse::class)
             ->get($this->prefixPath('leave/' . $id));
+    }
+
+    /**
+     * @return SimplicateResponseInterface|LeaveBalanceListResponse
+     */
+    public function leaveBalance(): LeaveBalanceListResponse
+    {
+        return $this->client->responseClass(LeaveBalanceListResponse::class)
+            ->get($this->prefixPath('leavebalance'));
     }
 
     /**

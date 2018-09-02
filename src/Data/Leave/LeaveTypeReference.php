@@ -19,7 +19,7 @@ class LeaveTypeReference extends AbstractDataObject
     protected $label;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $affectsBalance;
 
@@ -28,7 +28,7 @@ class LeaveTypeReference extends AbstractDataObject
     {
         $this->id             = Arr::get($data, 'id');
         $this->label          = Arr::get($data, 'label');
-        $this->affectsBalance = (bool) Arr::get($data, 'affects_balance', false);
+        $this->affectsBalance = Arr::get($data, 'affects_balance');
     }
 
     public function getId(): string
@@ -41,18 +41,23 @@ class LeaveTypeReference extends AbstractDataObject
         return $this->label;
     }
 
-    public function getAffectsBalance(): bool
+    public function getAffectsBalance(): ?bool
     {
         return $this->affectsBalance;
     }
 
     public function toArray(): array
     {
-        return [
-            'id'              => $this->getId(),
-            'label'           => $this->getLabel(),
-            'affects_balance' => $this->getAffectsBalance(),
+        $array = [
+            'id'    => $this->getId(),
+            'label' => $this->getLabel(),
         ];
+
+        if ($this->getAffectsBalance() !== null) {
+            $array['affects_balance'] = $this->getAffectsBalance();
+        }
+
+        return $array;
     }
 
 }

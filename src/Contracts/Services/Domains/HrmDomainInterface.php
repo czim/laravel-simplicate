@@ -5,6 +5,7 @@ namespace Czim\Simplicate\Contracts\Services\Domains;
 use Czim\Simplicate\Contracts\Services\SimplicateDomainInterface;
 use Czim\Simplicate\Data\Responses\EmployeeListResponse;
 use Czim\Simplicate\Data\Responses\EmployeeSingleResponse;
+use Czim\Simplicate\Data\Responses\LeaveBalanceListResponse;
 use Czim\Simplicate\Data\Responses\LeaveListResponse;
 use Czim\Simplicate\Data\Responses\LeaveSingleResponse;
 use Czim\Simplicate\Data\Responses\TeamListResponse;
@@ -21,6 +22,8 @@ interface HrmDomainInterface extends SimplicateDomainInterface
     public function allLeave(): LeaveListResponse;
 
     public function leave(string $id): LeaveSingleResponse;
+
+    public function leaveBalance(): LeaveBalanceListResponse;
 
     public function allTeams(): TeamListResponse;
 
