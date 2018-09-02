@@ -8,6 +8,8 @@ use Czim\Simplicate\Data\Responses\EmployeeListResponse;
 use Czim\Simplicate\Data\Responses\EmployeeSingleResponse;
 use Czim\Simplicate\Data\Responses\LeaveListResponse;
 use Czim\Simplicate\Data\Responses\LeaveSingleResponse;
+use Czim\Simplicate\Data\Responses\TeamListResponse;
+use Czim\Simplicate\Data\Responses\TeamSingleResponse;
 use Czim\Simplicate\Data\Responses\TimeTableListResponse;
 
 class HrmDomain extends AbstractDomain implements HrmDomainInterface
@@ -57,6 +59,25 @@ class HrmDomain extends AbstractDomain implements HrmDomainInterface
     {
         return $this->client->responseClass(LeaveSingleResponse::class)
             ->get($this->prefixPath('leave/' . $id));
+    }
+
+    /**
+     * @return SimplicateResponseInterface|TeamListResponse
+     */
+    public function allTeams(): TeamListResponse
+    {
+        return $this->client->responseClass(TeamListResponse::class)
+            ->get($this->prefixPath('team'));
+    }
+
+    /**
+     * @param string $id
+     * @return SimplicateResponseInterface|TeamSingleResponse
+     */
+    public function team(string $id): TeamSingleResponse
+    {
+        return $this->client->responseClass(TeamSingleResponse::class)
+            ->get($this->prefixPath('team/' . $id));
     }
 
     /**
