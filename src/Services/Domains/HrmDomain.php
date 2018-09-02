@@ -6,6 +6,10 @@ use Czim\Simplicate\Contracts\Data\SimplicateResponseInterface;
 use Czim\Simplicate\Contracts\Services\Domains\HrmDomainInterface;
 use Czim\Simplicate\Data\Responses\EmployeeListResponse;
 use Czim\Simplicate\Data\Responses\EmployeeSingleResponse;
+use Czim\Simplicate\Data\Responses\EmployeeTypeListResponse;
+use Czim\Simplicate\Data\Responses\EmployeeTypeSingleResponse;
+use Czim\Simplicate\Data\Responses\EmploymentTypeListResponse;
+use Czim\Simplicate\Data\Responses\EmploymentTypeSingleResponse;
 use Czim\Simplicate\Data\Responses\LeaveBalanceListResponse;
 use Czim\Simplicate\Data\Responses\LeaveListResponse;
 use Czim\Simplicate\Data\Responses\LeaveSingleResponse;
@@ -43,6 +47,44 @@ class HrmDomain extends AbstractDomain implements HrmDomainInterface
     {
         return $this->client->responseClass(EmployeeSingleResponse::class)
             ->get($this->prefixPath('employee/' . $id));
+    }
+
+    /**
+     * @return SimplicateResponseInterface|EmployeeTypeListResponse
+     */
+    public function allEmployeeTypes(): EmployeeTypeListResponse
+    {
+        return $this->client->responseClass(EmployeeTypeListResponse::class)
+            ->get($this->prefixPath('employeetype'));
+    }
+
+    /**
+     * @param string $id
+     * @return SimplicateResponseInterface|EmployeeTypeSingleResponse
+     */
+    public function employeeType(string $id): EmployeeTypeSingleResponse
+    {
+        return $this->client->responseClass(EmployeeTypeSingleResponse::class)
+            ->get($this->prefixPath('employeetype/' . $id));
+    }
+
+    /**
+     * @return SimplicateResponseInterface|EmploymentTypeListResponse
+     */
+    public function allEmploymentTypes(): EmploymentTypeListResponse
+    {
+        return $this->client->responseClass(EmploymentTypeListResponse::class)
+            ->get($this->prefixPath('employmenttype'));
+    }
+
+    /**
+     * @param string $id
+     * @return SimplicateResponseInterface|EmploymentTypeSingleResponse
+     */
+    public function employmentType(string $id): EmploymentTypeSingleResponse
+    {
+        return $this->client->responseClass(EmploymentTypeSingleResponse::class)
+            ->get($this->prefixPath('employmenttype/' . $id));
     }
 
     /**
