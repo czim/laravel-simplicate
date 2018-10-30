@@ -46,7 +46,7 @@ class Employee extends AbstractDataObject
     protected $personId;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
 
@@ -190,7 +190,7 @@ class Employee extends AbstractDataObject
         return $this->personId;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
