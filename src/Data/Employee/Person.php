@@ -32,7 +32,7 @@ class Person extends AbstractDataObject
     protected $genderId;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $gender;
 
@@ -90,7 +90,7 @@ class Person extends AbstractDataObject
         return $this->genderId;
     }
 
-    public function getGender(): string
+    public function getGender(): ?string
     {
         return $this->gender;
     }
